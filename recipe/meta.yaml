@@ -1,5 +1,5 @@
 {% set name = "types-pyfarmhash" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/types-pyfarmhash-{{ version }}.tar.gz
-  sha256: d7f66791e1d17142af462abb24703aeafe40bb29c07b554edae12145554f5c82
+  sha256: 82ee5383befb880359dd74ce3e8aa7b4af6ebadfd1ee6fc2c6244f3eb56508ae
 
 build:
   number: 0
