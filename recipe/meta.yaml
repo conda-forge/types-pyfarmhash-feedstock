@@ -1,31 +1,34 @@
-{% set name = "types-pyfarmhash" %}
 {% set version = "0.4.0.20240902" %}
 
-
 package:
-  name: {{ name|lower }}
+  name: types-pyfarmhash
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/types-pyfarmhash-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/t/types-pyfarmhash/types-pyfarmhash-{{ version }}.tar.gz
   sha256: 6844405542f50048b0fa97fd2357fc6524532fc83de21d5696500c73c0189420
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - pip
+    - python {{ python_min }}
   commands:
+    - pip check
     - test -f $SP_DIR/farmhash-stubs/__init__.pyi
-
 
 about:
   home: https://github.com/python/typeshed
